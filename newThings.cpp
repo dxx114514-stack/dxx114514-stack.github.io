@@ -39,7 +39,7 @@ int main(){
         str tmp;
         getline(html,tmp);
         html1<<tmp<<endl;
-        if(tmp=="<!--flag-->"){
+        if(tmp=="<!--video-->"){
             html1<<"<a href=\".\\P"+to_string(p)+"\\index.html\">P"+to_string(p)+':'+title+"</a><br>\n";
         }
     }
