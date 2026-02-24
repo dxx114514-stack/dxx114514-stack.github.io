@@ -65,6 +65,8 @@ int main(){
     }
     index<<"</body>\n</html>";
     index.close();
+    system("git add .");
+    system(("git commit -m \"add P"+to_string(p)).c_str());
     if(system("git push")==0)cout<<"上传成功"<<endl;
     else cout<<"上传失败"<<endl;
     sysp
