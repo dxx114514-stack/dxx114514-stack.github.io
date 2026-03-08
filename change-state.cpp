@@ -31,7 +31,7 @@ int main(){
         cin>>code;
         cout<<"输入版本："<<endl;
         str khd;
-        getline(cin,khd);
+        cin>>khd;
         fout<<"<h1 style=\"color:green;\">服务器已启动</h1><br>邀请码（PCL-CE、HMCL、FCL等基于easytier）：<br>"+code+"<br>版本："+khd;
     }
     fout<<"</body></html>";
