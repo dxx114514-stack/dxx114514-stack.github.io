@@ -22,7 +22,7 @@ int main(){
     int a;
     cin>>a;
     ofstream fout("Server_State.html");
-    fout<<"<html><head><meta charset=\"GBK\"><title>Server_State</title></head><body>";
+    fout<<"<html><head><meta charset=\"gbk\"><title>Server_State</title></head><body>";
     if(a==1){
         fout<<"<h1 style=\"color:red;\">·şÎñÆ÷ÒÑÍ£Ö¹</h1>";
     }else{
