@@ -23,7 +23,7 @@ int main(){
     int a;
     cin>>a;
     ofstream fout("Server_State.html");
-    fout<<"<html><head><meta charset=\"gbk\"><title>Server_State</title></head><body>";
+    fout<<"<html><head><title>Server_State</title></head><body>";
     if(a==1){
         fout<<"<h1 style=\"color:red;\">服务器已停止</h1>";
     }else{
