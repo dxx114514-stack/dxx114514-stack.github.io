@@ -18,6 +18,7 @@ ll qp(ll d,ll c){
     return ans;
 }
 int main(){
+    system("chcp 65001");
     cout<<"更改到：\n1.停止\n2.开始";
     int a;
     cin>>a;
