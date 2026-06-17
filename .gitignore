@@ -1,0 +1,6 @@
+*.exe
+*.dll
+*.zip
+*.tar.gz
+System Volume Information/
+$RECYCLE.BIN/
