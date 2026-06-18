@@ -22,7 +22,7 @@ int main(){
     cout<<"更改到：\n1.停止\n2.开始";
     int a;
     cin>>a;
-    ofstream fout("Server_State.html");
+    ofstream fout(".\\docs\\Server_State.html");
     fout<<"<html><head><title>Server_State</title></head><body>";
     if(a==1){
         fout<<"<h1 style=\"color:red;\">服务器已停止</h1>";

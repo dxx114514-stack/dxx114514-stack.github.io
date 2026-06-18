@@ -21,7 +21,8 @@ ll qp(ll d,ll c){
     return ans;
 }
 int main(){
-    cout<<"ÊäÈëÊÓÆµ±êÌâ£º";
+    system("chcp 65001");
+    cout<<"è¾“å…¥è§†é¢‘æ ‡é¢˜ï¼š";
     str title;
     cin>>title;
     ll p;
@@ -50,14 +51,27 @@ int main(){
     ofstream index("P"+to_string(p)+"\\index.html");
     index<<"<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>P"+to_string(p)+':'+title+"</title>\n</head>\n<body>\n<h1>P"+to_string(p)+':'+title+"\
     </h1>\n<br>\n";
-    cout<<"ÊäÈë×ÊÔ´ÊýÁ¿£º";
+    cout<<"è¾“å…¥èµ„æºæ•°é‡ï¼š";
     ll n;
     cin>>n;
     for(ll i=1;i<=n;i++){
-        cout<<"ÊäÈëµÚ"<<i<<"¸ö×ÊÔ´µÄÃû³Æ£º";
+        cout<<"è¾“å…¥ç¬¬"<<i<<"ä¸ªèµ„æºçš„ç±»åž‹\n1:ä»£ç  2:æ–‡ä»¶ 3:å­—ç¬¦ä¸² 4:å›¾ç‰‡ï¼š";
+        str type;
+        cin>>type;
+        if(type=="1"){
+            cout<<"è¾“å…¥ç¬¬"<<i<<"ä¸ªèµ„æºçš„è¯­è¨€ï¼š";
+            str lang;
+            cin>>lang;
+            cout<<"è¾“å…¥ç¬¬"<<i<<"ä¸ªèµ„æºçš„å†…å®¹ï¼š";
+            str content;
+            cin.ignore(100000,'\n');
+            getline(cin,content);
+            ofstream code("P"+to_string(p)+"\\"+to_string(i)+".html");
+        }
+        cout<<"è¾“å…¥ç¬¬"<<i<<"ä¸ªèµ„æºçš„åç§°ï¼š";
         str name;
         cin>>name;
-        cout<<"ÊäÈëµÚ"<<i<<"¸ö×ÊÔ´µÄÂ·¾¶£º";
+        cout<<"è¾“å…¥ç¬¬"<<i<<"ä¸ªèµ„æºçš„è·¯å¾„ï¼š";
         str link;
         cin>>link;
         system(("copy \""+link+"\" \"P"+to_string(p)+"\\"+to_string(i)+"."+link.substr(link.find_last_of('.'))+"\"").c_str());
@@ -67,8 +81,8 @@ int main(){
     index.close();
     system("git add .");
     system(("git commit -m \"add P"+to_string(p)).c_str());
-    if(system("git push")==0)cout<<"ÉÏ´«³É¹¦"<<endl;
-    else cout<<"ÉÏ´«Ê§°Ü"<<endl;
+    if(system("git push")==0)cout<<"ä¸Šä¼ æˆåŠŸ"<<endl;
+    else cout<<"ä¸Šä¼ å¤±è´¥"<<endl;
     sysp
     return 0;
 }
