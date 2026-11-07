@@ -1,42 +1,280 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<title>DXX's html
-</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DXX's HTML Programs</title>
+<style>
+  :root {
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --surface-hover: #ffffff;
+    --text: #172033;
+    --muted: #616b80;
+    --border: #e2e8f2;
+    --accent: #3b6ef6;
+    --accent-soft: rgba(59, 110, 246, .1);
+    --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 10px 28px rgba(16, 24, 40, .07);
+    --shadow-hover: 0 2px 4px rgba(16, 24, 40, .06), 0 16px 40px rgba(16, 24, 40, .12);
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c1018;
+      --surface: #141b26;
+      --surface-hover: #182131;
+      --text: #e7ecf6;
+      --muted: #98a4ba;
+      --border: #232c3c;
+      --accent: #6f9bff;
+      --accent-soft: rgba(111, 155, 255, .14);
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 28px rgba(0, 0, 0, .35);
+      --shadow-hover: 0 2px 4px rgba(0, 0, 0, .45), 0 18px 44px rgba(0, 0, 0, .5);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    padding: 0 20px 64px;
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 420px at 12% -8%, var(--accent-soft), transparent 70%),
+      radial-gradient(760px 380px at 92% 0%, var(--accent-soft), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  header.hero {
+    padding: 72px 4px 40px;
+  }
+
+  header.hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+  }
+
+  header.hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  section { margin-top: 40px; }
+
+  section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  section h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  a.card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 18px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: transform .18s ease, box-shadow .18s ease,
+      border-color .18s ease, background-color .18s ease;
+  }
+
+  a.card:hover,
+  a.card:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    background: var(--surface-hover);
+    box-shadow: var(--shadow-hover);
+    outline: none;
+  }
+
+  a.card:active { transform: translateY(-1px); }
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+
+  .card-title::after {
+    content: "↗";
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--muted);
+    opacity: 0;
+    transform: translate(-3px, 3px);
+    transition: opacity .18s ease, transform .18s ease, color .18s ease;
+  }
+
+  a.card:hover .card-title::after,
+  a.card:focus-visible .card-title::after {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--accent);
+  }
+
+  .card-desc {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .empty {
+    margin: 0;
+    padding: 18px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  footer {
+    max-width: 1040px;
+    margin: 56px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  @media (max-width: 520px) {
+    body { padding: 0 14px 48px; }
+    header.hero { padding: 48px 2px 28px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a.card, .card-title::after { transition: none; }
+  }
+</style>
 </head>
 <body>
-<h1>DXX's HTML programs</h1>
-<br><h2><a href="./Problems/index.html">题目集</a></h2>
-<br><h2>视频文件</h2>
-<!--video-->
-<h2>其他文件</h2>
-<a href="https://nold.dxxj.de5.net">NoldOJ官网</a>
-<br>
-<a href="https://anm.dxxj.de5.net">AI 写 NoldOJ 网站</a>
-<br>
-<a href="https://jl.dxxj.de5.net">CliJudge官网</a>
-<br>
-<a href="https://dxxj.de5.net">dxxjudges 组织官网</a>
-<br>
-<a href="https://lb.dxxj.de5.net">LinkBridge 官网</a>
-<br>
-<a href="./BMI/index.html">BMI</a>
-<br>
-<a href="./TaFang/index.html">塔防</a>
-<br>
-<a href="./MCLauchers.html">MC Lauchers</a>
-<br>
-<a href="./Server_State.html">MC Server state</a>
-<br>
-<a href="./OIrscc/OIrscc.html">OI 重开模拟游戏</a>
-<br>
-<a href="./OIrscc/OIrscc-zb.html">OI 重开模拟游戏（作弊版）</a>
-<br>
-<a href="./OItrainer-zb">OI 教练模拟器（作弊版）</a>
+<div class="wrap">
+  <header class="hero">
+    <h1>DXX's HTML Programs</h1>
+    <p>各种小工具、小游戏与站点入口</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>站点导航</h2>
+      <div class="grid">
+        <a class="card" href="https://nold.dxxj.de5.net">
+          <span class="card-title">NoldOJ 官网</span>
+          <span class="card-desc">在线评测系统</span>
+        </a>
+        <a class="card" href="https://anm.dxxj.de5.net">
+          <span class="card-title">AI 写 NoldOJ 网站</span>
+          <span class="card-desc">用 AI 生成 NoldOJ 站点</span>
+        </a>
+        <a class="card" href="https://jl.dxxj.de5.net">
+          <span class="card-title">CliJudge 官网</span>
+          <span class="card-desc">评测工具</span>
+        </a>
+        <a class="card" href="https://dxxj.de5.net">
+          <span class="card-title">dxxjudges 组织官网</span>
+          <span class="card-desc">组织主页</span>
+        </a>
+        <a class="card" href="https://lb.dxxj.de5.net">
+          <span class="card-title">LinkBridge 官网</span>
+          <span class="card-desc">项目主页</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>题目与工具</h2>
+      <div class="grid">
+        <a class="card" href="./Problems/index.html">
+          <span class="card-title">题目集</span>
+          <span class="card-desc">本地题目集合</span>
+        </a>
+        <a class="card" href="./BMI/index.html">
+          <span class="card-title">BMI</span>
+          <span class="card-desc">BMI 计算器</span>
+        </a>
+        <a class="card" href="./MCLauchers.html">
+          <span class="card-title">MC Launchers</span>
+          <span class="card-desc">Minecraft 启动器资源</span>
+        </a>
+        <a class="card" href="./Server_State.html">
+          <span class="card-title">MC Server State</span>
+          <span class="card-desc">服务器状态查询</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>小游戏</h2>
+      <div class="grid">
+        <a class="card" href="./TaFang/index.html">
+          <span class="card-title">塔防</span>
+          <span class="card-desc">塔防小游戏</span>
+        </a>
+        <a class="card" href="./OIrscc/OIrscc.html">
+          <span class="card-title">OI 重开模拟游戏</span>
+          <span class="card-desc">模拟 OI 生涯</span>
+        </a>
+        <a class="card" href="./OIrscc/OIrscc-zb.html">
+          <span class="card-title">OI 重开模拟游戏（作弊版）</span>
+          <span class="card-desc">带作弊功能的版本</span>
+        </a>
+        <a class="card" href="./OItrainer-zb">
+          <span class="card-title">OI 教练模拟器（作弊版）</span>
+          <span class="card-desc">带作弊功能的版本</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>视频文件</h2>
+      <!--video-->
+      <p class="empty">暂无视频</p>
+    </section>
+  </main>
+
+  <footer>DXX's HTML Programs</footer>
+</div>
 </body>
 </html>
-
-
-
-
-
-
