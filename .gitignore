@@ -4,3 +4,5 @@
 *.tar.gz
 System Volume Information/
 $RECYCLE.BIN/
+__pycache__/
+*.pyc

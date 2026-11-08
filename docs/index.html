@@ -103,7 +103,8 @@
     gap: 14px;
   }
 
-  a.card {
+  .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -118,8 +119,8 @@
       border-color .18s ease, background-color .18s ease;
   }
 
-  a.card:hover,
-  a.card:focus-visible {
+  .card:hover,
+  .card:focus-within {
     transform: translateY(-3px);
     border-color: var(--accent);
     background: var(--surface-hover);
@@ -127,7 +128,26 @@
     outline: none;
   }
 
-  a.card:active { transform: translateY(-1px); }
+  .card:active { transform: translateY(-1px); }
+
+  /* 整卡可点击，同时允许描述里出现普通链接 */
+  .card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+  }
+
+  .card-desc a,
+  .card-desc .card-link {
+    position: relative;
+    z-index: 1;
+  }
 
   .card-title {
     display: flex;
@@ -148,17 +168,60 @@
     transition: opacity .18s ease, transform .18s ease, color .18s ease;
   }
 
-  a.card:hover .card-title::after,
-  a.card:focus-visible .card-title::after {
+  .card:hover .card-title::after,
+  .card:focus-within .card-title::after {
     opacity: 1;
     transform: translate(0, 0);
     color: var(--accent);
+  }
+
+  .card-title a {
+    color: inherit;
+    text-decoration: none;
   }
 
   .card-desc {
     color: var(--muted);
     font-size: 13px;
   }
+
+  /* 描述里的 Markdown 内容 */
+  .card-desc.md > :first-child { margin-top: 0; }
+  .card-desc.md > :last-child { margin-bottom: 0; }
+  .card-desc.md p { margin: 0 0 .5em; }
+  .card-desc.md ul,
+  .card-desc.md ol { margin: 0 0 .5em; padding-left: 1.25em; }
+  .card-desc.md li { margin: .15em 0; }
+  .card-desc.md h1,
+  .card-desc.md h2,
+  .card-desc.md h3,
+  .card-desc.md h4 { margin: .6em 0 .3em; font-size: 1em; color: var(--text); }
+  .card-desc.md blockquote {
+    margin: 0 0 .5em;
+    padding-left: .75em;
+    border-left: 2px solid var(--border);
+  }
+  .card-desc.md hr { border: 0; border-top: 1px solid var(--border); margin: .6em 0; }
+  .card-desc code {
+    padding: .1em .35em;
+    border-radius: 4px;
+    background: var(--accent-soft);
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: .92em;
+  }
+  .card-desc pre {
+    margin: 0 0 .5em;
+    padding: 10px 12px;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: var(--accent-soft);
+  }
+  .card-desc pre code { padding: 0; background: none; }
+  .card-desc a { color: var(--accent); }
+  .card-desc img { max-width: 100%; border-radius: 8px; }
+  .card-desc table { width: 100%; border-collapse: collapse; margin: 0 0 .5em; }
+  .card-desc th,
+  .card-desc td { padding: .3em .5em; border: 1px solid var(--border); text-align: left; }
 
   .empty {
     margin: 0;
@@ -270,7 +333,9 @@
     <section>
       <h2>视频文件</h2>
       <!--video-->
+      <!-- video:start -->
       <p class="empty">暂无视频</p>
+      <!-- video:end -->
     </section>
   </main>
 
