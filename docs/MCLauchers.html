@@ -1,52 +1,264 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<title>MCLauchers</title></head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MC Launchers</title>
+<meta name="description" content="Minecraft 启动器资源汇总，包含 PCL2、PCL-CE、HMCL、BakaXL、LauncherX、网易、官方与 Modrinth，以及 Android 端的 Fold Craft Launcher 和 Zalith Launcher。">
+<style>
+  :root {
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --surface-hover: #ffffff;
+    --text: #172033;
+    --muted: #616b80;
+    --border: #e2e8f2;
+    --accent: #3b6ef6;
+    --accent-soft: rgba(59, 110, 246, .1);
+    --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 10px 28px rgba(16, 24, 40, .07);
+    --shadow-hover: 0 2px 4px rgba(16, 24, 40, .06), 0 16px 40px rgba(16, 24, 40, .12);
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c1018;
+      --surface: #141b26;
+      --surface-hover: #182131;
+      --text: #e7ecf6;
+      --muted: #98a4ba;
+      --border: #232c3c;
+      --accent: #6f9bff;
+      --accent-soft: rgba(111, 155, 255, .14);
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 28px rgba(0, 0, 0, .35);
+      --shadow-hover: 0 2px 4px rgba(0, 0, 0, .45), 0 18px 44px rgba(0, 0, 0, .5);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    padding: 0 20px 64px;
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 420px at 12% -8%, var(--accent-soft), transparent 70%),
+      radial-gradient(760px 380px at 92% 0%, var(--accent-soft), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  header.hero {
+    padding: 72px 4px 40px;
+  }
+
+  header.hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+  }
+
+  header.hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  section { margin-top: 40px; }
+
+  section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  section h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 18px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transition: transform .18s ease, box-shadow .18s ease,
+      border-color .18s ease, background-color .18s ease;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    background: var(--surface-hover);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+
+  .card-desc {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .card-desc a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .card-desc a:hover {
+    text-decoration: underline;
+  }
+
+  .card-desc a + a::before {
+    content: "·";
+    margin: 0 8px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  footer {
+    max-width: 1040px;
+    margin: 56px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  @media (max-width: 520px) {
+    body { padding: 0 14px 48px; }
+    header.hero { padding: 48px 2px 28px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+  }
+</style>
+</head>
 <body>
-<h1>MC Lauchers</h1>
-<h2>PC</h2>
-<h3>PCL2</h3>
-<a href="https://github.com/Hex-Dragon/PCL2">Github(不可下载)</a>
-<br>
-<a href="https://afdian.com/a/LTCat">官网</a>
-<h3>PCL-CE</h3>
-<a href="https://github.com/PCL-Community/PCL2-CE">Github</a>
-<br>
-<a href="https://ce.pclc.cc/">官网</a>
+<div class="wrap">
+  <header class="hero">
+    <h1>MC Launchers</h1>
+    <p>Minecraft 启动器资源汇总</p>
+  </header>
 
-<h3>HMCL</h3>
+  <main>
+    <section>
+      <h2>PC</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="card-title">PCL2</span>
+          <span class="card-desc">
+            <a href="https://github.com/Hex-Dragon/PCL2">Github（不可下载）</a>
+            <a href="https://afdian.com/a/LTCat">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">PCL-CE</span>
+          <span class="card-desc">
+            <a href="https://github.com/PCL-Community/PCL2-CE">Github</a>
+            <a href="https://ce.pclc.cc/">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">HMCL</span>
+          <span class="card-desc">
+            <a href="https://github.com/huanghongxun/HMCL">Github</a>
+            <a href="https://hmcl.huangyuhui.net/">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">BakaXL</span>
+          <span class="card-desc">
+            <a href="https://github.com/BakaXL-Launcher">Github（不可下载）</a>
+            <a href="https://www.bakaxl.com/">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">LauncherX</span>
+          <span class="card-desc">
+            <a href="https://corona.studio/lx/download">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">网易</span>
+          <span class="card-desc">
+            <a href="https://mc.163.com/">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">官方</span>
+          <span class="card-desc">
+            <a href="https://minecraft.net/">官网</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">Modrinth</span>
+          <span class="card-desc">
+            <a href="https://modrinth.com/">官网</a>
+          </span>
+        </div>
+      </div>
+    </section>
 
-<a href="https://github.com/huanghongxun/HMCL">Github</a>
-<br>
-<a href="https://hmcl.huangyuhui.net/">官网</a>
+    <section>
+      <h2>Android</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="card-title">Fold Craft Launcher</span>
+          <span class="card-desc">
+            <a href="https://github.com/FCL-Team/FoldCraftLauncher">Github</a>
+          </span>
+        </div>
+        <div class="card">
+          <span class="card-title">Zalith Launcher</span>
+          <span class="card-desc">
+            <a href="https://github.com/ZalithLauncher/ZalithLauncher">Github</a>
+            <a href="https://zalithlauncher.com/">官网</a>
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<h3>BakaXL</h3>
-
-<a href="https://github.com/BakaXL-Launcher">Github(不可下载)</a>
-<br>
-<a href="https://www.bakaxl.com/">官网</a>
-
-<h3>LaucherX</h3>
-
-<a href="https://corona.studio/lx/download">官网</a>
-
-<h3>网易</h3>
-
-<a href="mc.163.com">官网</a>
-
-<h3>官方</h3>
-
-<a href="minecraft.net">官网</a>
-
-<h3>Modrinth</h3>
-
-<a href="https://modrinth.com/">官网</a>
-
-<h2>Android</h2>
-<h3>Fold Craft Launcher</h3>
-<a href="https://github.com/FCL-Team/FoldCraftLauncher">Github</a>
-<h3>Zalith Launcher</h3>
-<a href="https://github.com/ZalithLauncher/ZalithLauncher">Github</a>
-<br>
-<a href="https://zalithlauncher.com/">官网</a>
+  <footer>MC Launchers · DXX's HTML Programs</footer>
+</div>
 </body>
 </html>
